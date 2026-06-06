@@ -180,15 +180,9 @@
     .hero {
       background: #000;
       position: relative;
-      padding: 80px 0;
+      padding: 10px 0 0;
       overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: url('https://carwashestetica.com/wp-content/uploads/2025/03/car-washing-on-open-air-SLQMQ6V.jpg') center center / cover no-repeat;
-      opacity: 0.3;
+      z-index: 5;
     }
     .hero .container {
       display: flex;
@@ -222,54 +216,71 @@
       line-height: 1.8em;
       margin-bottom: 30px;
     }
-    .hero-image {
+    .hero-card {
       flex: 1;
-      text-align: right;
-    }
-    .hero-image img {
-      max-width: 100%;
-      border-radius: 10px;
-    }
-
-    /* ===== STATS ===== */
-    .stats {
-      background: #1C202F;
-      padding: 60px 0;
-    }
-    .stats .container {
+      border-radius: 20px;
+      overflow: hidden;
+      min-height: 480px;
+      background: url('https://carwashestetica.com/wp-content/uploads/2025/04/Made-with-insMind-Design-sem-nome.png') center right / cover no-repeat;
       display: flex;
+      flex-direction: column;
       justify-content: center;
-      align-items: center;
-      text-align: center;
-      gap: 80px;
-      flex-wrap: wrap;
+      padding: 50px 40px 80px;
+      margin-bottom: -30px;
     }
-    .stat-item {
+    .hero-card .stat {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .hero-card .stat .icon-circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #E53935;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
       color: #fff;
     }
-    .stat-item .number {
+    .hero-card .stat .num {
       font-family: 'Exo 2', sans-serif;
       font-size: 45px;
       font-weight: 700;
-      color: #E53935;
+      color: #fff;
+      line-height: 1;
     }
-    .stat-item .number span {
+    .hero-card .stat .num span {
       font-size: 35px;
     }
-    .stat-item .label {
+    .hero-card .stat .label {
       font-size: 14px;
-      color: #aaa;
-      margin-top: 5px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.8);
+      margin-top: 2px;
     }
-    .stat-item .stars {
+    .hero-card .rating-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .hero-card .rating-row .big-num {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 45px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+    }
+    .hero-card .rating-row .stars {
       color: #E53935;
-      font-size: 24px;
+      font-size: 22px;
       letter-spacing: 3px;
     }
-    .stat-item .rating {
+    .hero-card .rating-row .rating-text {
       font-size: 14px;
-      color: #aaa;
-      margin-top: 5px;
+      color: rgba(255,255,255,0.7);
     }
 
     /* ===== SECTION COMMON ===== */
@@ -934,13 +945,14 @@
       .menu-toggle { display: block; }
       .hero .container { flex-direction: column; }
       .hero-content h1 { font-size: 40px; }
-      .hero-image { text-align: center; margin-top: 20px; }
+      .hero-card { min-height: 300px; padding: 30px 20px 60px; margin-bottom: 0; }
       .section-title h2 { font-size: 36px; }
       .stats .container { gap: 40px; }
       .top-bar .info-item { padding: 3px 10px; font-size: 12px; }
     }
     @media (max-width: 480px) {
       .hero-content h1 { font-size: 32px; }
+      .hero-card { min-height: 250px; padding: 20px 15px 40px; }
       .section-title h2 { font-size: 30px; }
       .top-bar .info-item { padding: 2px 8px; font-size: 11px; }
     }
@@ -995,29 +1007,30 @@
 <!-- ===== HERO ===== -->
 <section class="hero">
   <div class="container">
-    <div class="hero-content fade-in-left visible">
+    <div class="hero-content">
       <div class="subtitle">Bem-vindo ao Gordinho Lava Car</div>
       <h1>A lavagem impecável que seu carro merece!</h1>
       <p>Cuidamos de cada detalhe com excelência, tecnologia e paixão entregando um resultado excepcional para pessoas exigentes!</p>
       <a href="http://www.contate.me/carwashcwb" class="btn btn-red">Chamar no WhatsApp</a>
     </div>
-    <div class="hero-image fade-in-right visible">
-      <img src="https://carwashestetica.com/wp-content/uploads/2025/03/yellowcar.png" alt="Carro amarelo sendo lavado">
-    </div>
-  </div>
-</section>
-
-<!-- ===== STATS ===== -->
-<section class="stats">
-  <div class="container">
-    <div class="stat-item fade-in visible">
-      <div class="number">0<span>+</span></div>
-      <div class="label">Carros Lavados</div>
-    </div>
-    <div class="stat-item fade-in visible">
-      <div class="stars">★★★★★</div>
-      <div class="label">Classificado como 4.5 de 5</div>
-      <div class="rating">69+ avaliações sobre nós</div>
+    <div class="hero-card">
+      <div class="stat">
+        <div class="icon-circle">
+          <i class="fas fa-car-alt"></i>
+        </div>
+        <div>
+          <div class="num">0<span>+</span></div>
+          <div class="label">Carros Lavados</div>
+        </div>
+      </div>
+      <div style="flex:1;"></div>
+      <div class="rating-row">
+        <div class="big-num">4.9</div>
+        <div>
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="rating-text">69+ avaliações sobre nós</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
