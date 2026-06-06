@@ -172,15 +172,88 @@
       padding: 10px 24px;
       font-size: 14px;
     }
+    /* ===== MOBILE OVERLAY MENU ===== */
     .menu-toggle {
       display: none;
-      background: #000;
+      background: transparent;
       color: #fff;
       border: none;
-      font-size: 24px;
-      padding: 8px 12px;
+      width: 44px;
+      height: 44px;
+      padding: 10px;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
       cursor: pointer;
+      position: relative;
+      z-index: 100;
     }
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+    .menu-toggle.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+    .nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.97);
+      backdrop-filter: blur(16px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 99;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    .nav-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .nav-overlay ul { list-style: none; text-align: center; }
+    .nav-overlay ul li {
+      margin: 10px 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+    }
+    .nav-overlay.open ul li {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .nav-overlay.open ul li:nth-child(1) { transition-delay: 0.1s; }
+    .nav-overlay.open ul li:nth-child(2) { transition-delay: 0.15s; }
+    .nav-overlay.open ul li:nth-child(3) { transition-delay: 0.2s; }
+    .nav-overlay.open ul li:nth-child(4) { transition-delay: 0.25s; }
+    .nav-overlay.open ul li:nth-child(5) { transition-delay: 0.3s; }
+    .nav-overlay.open ul li:nth-child(6) { transition-delay: 0.35s; }
+    .nav-overlay ul li a {
+      color: #fff;
+      font-family: 'Exo 2', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      padding: 15px 30px;
+      display: block;
+      transition: color 0.3s;
+    }
+    .nav-overlay ul li a:hover { color: #E53935; }
 
     /* ===== HERO ===== */
     .hero {
@@ -413,11 +486,13 @@
       padding: 35px 25px;
       text-align: center;
       box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: transform 0.4s cubic-bezier(.23,1,.32,1), box-shadow 0.4s;
+      transform-style: preserve-3d;
+      perspective: 800px;
     }
     .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      transform: translateY(-8px) rotateX(4deg) rotateY(-2deg);
+      box-shadow: 0 18px 35px rgba(0,0,0,0.12);
     }
     .service-card i {
       font-size: 45px;
@@ -474,11 +549,13 @@
       padding: 35px 25px;
       text-align: center;
       border: 1px solid #eee;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: transform 0.4s cubic-bezier(.23,1,.32,1), box-shadow 0.4s;
+      transform-style: preserve-3d;
+      perspective: 800px;
     }
     .pricing-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      transform: translateY(-8px) rotateX(4deg) rotateY(2deg);
+      box-shadow: 0 18px 35px rgba(0,0,0,0.12);
     }
     .pricing-card h4 {
       font-family: 'Exo 2', sans-serif;
@@ -754,14 +831,17 @@
       transition: transform 0.3s;
     }
     .faq-answer {
-      padding: 0 25px 18px;
+      padding: 0 25px;
       font-size: 14px;
       color: #767986;
-      display: none;
       line-height: 1.7em;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
     }
     .faq-item.open .faq-answer {
-      display: block;
+      max-height: 300px;
+      padding: 0 25px 18px;
     }
     .faq-item.open .faq-question i {
       transform: rotate(180deg);
@@ -770,13 +850,13 @@
     /* ===== FOOTER ===== */
     .footer {
       background: #1C202F;
-      padding: 60px 0 30px;
+      padding: 50px 0 25px;
     }
     .footer-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
       gap: 40px;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
     @media (max-width: 768px) {
       .footer-grid { grid-template-columns: 1fr; text-align: center; }
@@ -793,9 +873,7 @@
       font-size: 14px;
       line-height: 1.8em;
     }
-    .footer a:hover {
-      color: #E53935;
-    }
+    .footer a:hover { color: #E53935; }
     .footer-social {
       display: flex;
       gap: 12px;
@@ -823,42 +901,32 @@
     .footer-links ul {
       list-style: none;
     }
-    .footer-links ul li {
-      margin-bottom: 8px;
-    }
-    .footer-links ul li a {
-      color: #aaa;
-    }
-    .footer-links ul li a:hover {
-      color: #E53935;
-    }
+    .footer-links ul li { margin-bottom: 8px; }
+    .footer-links ul li a { color: #aaa; }
+    .footer-links ul li a:hover { color: #E53935; }
     .footer-bottom {
       border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 30px;
+      padding-top: 25px;
       text-align: center;
     }
     .footer-bottom p {
       font-size: 14px;
       color: #aaa;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
     .footer-bottom .disclaimer {
-      font-size: 12px;
+      font-size: 11px;
       color: #777;
-      max-width: 800px;
-      margin: 10px auto;
-      line-height: 1.6em;
+      max-width: 700px;
+      margin: 8px auto;
+      line-height: 1.5em;
     }
-    .footer-bottom .legal {
-      margin-top: 15px;
-    }
+    .footer-bottom .legal { margin-top: 12px; }
     .footer-bottom .legal a {
       color: #aaa;
       font-size: 13px;
     }
-    .footer-bottom .legal a:hover {
-      color: #E53935;
-    }
+    .footer-bottom .legal a:hover { color: #E53935; }
 
     /* ===== WHATSAPP FLOAT ===== */
     .whatsapp-float {
@@ -885,6 +953,101 @@
       50% { transform: scale(1.12); }
       100% { transform: scale(1); }
     }
+
+    /* ===== RIPPLE EFFECT ===== */
+    .ripple {
+      position: relative;
+      overflow: hidden;
+    }
+    .ripple::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      width: 100px;
+      height: 100px;
+      margin-top: -50px;
+      margin-left: -50px;
+      top: var(--mouse-y, 50%);
+      left: var(--mouse-x, 50%);
+      transform: scale(0);
+      opacity: 0;
+    }
+    .ripple:active::after {
+      animation: ripple-anim 0.6s ease-out;
+    }
+    @keyframes ripple-anim {
+      from { transform: scale(0); opacity: 0.6; }
+      to { transform: scale(4); opacity: 0; }
+    }
+
+    /* ===== COUNTER ===== */
+    .counter-num {
+      display: inline-block;
+    }
+
+    /* ===== TESTIMONIALS CAROUSEL ===== */
+    .testimonials-carousel-wrapper {
+      position: relative;
+      margin-top: 20px;
+    }
+    .testimonials-track {
+      display: flex;
+      gap: 20px;
+      overflow: hidden;
+      scroll-behavior: smooth;
+    }
+    .testimonials-track .testimonial-card {
+      min-width: calc(33.333% - 14px);
+      flex-shrink: 0;
+    }
+    @media (max-width: 768px) {
+      .testimonials-track .testimonial-card { min-width: calc(100% - 0px); }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .testimonials-track .testimonial-card { min-width: calc(50% - 10px); }
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid #eee;
+      color: #1C202F;
+      font-size: 18px;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .carousel-btn:hover { background: #E53935; color: #fff; border-color: #E53935; }
+    .carousel-btn.prev { left: -22px; }
+    .carousel-btn.next { right: -22px; }
+    @media (max-width: 768px) {
+      .carousel-btn { display: none; }
+    }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .carousel-dots button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      background: #ddd;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      padding: 0;
+    }
+    .carousel-dots button.active { background: #E53935; transform: scale(1.3); }
 
     /* ===== ANIMATIONS ===== */
     .fade-in {
@@ -930,21 +1093,8 @@
       .section-title h2 { font-size: 39px; }
     }
     @media (max-width: 768px) {
-      .header nav ul {
-        display: none;
-        flex-direction: column;
-        background: #000;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        padding: 20px;
-        gap: 5px;
-        border-top: 1px solid rgba(255,255,255,0.1);
-      }
-      .header nav ul.open { display: flex; }
-      .header nav { position: relative; }
-      .menu-toggle { display: block; }
+      .header nav ul { display: none; }
+      .menu-toggle { display: flex; }
       .hero .container { flex-direction: column; }
       .hero-content h1 { font-size: 40px; }
       .hero-card { min-height: 300px; padding: 30px 20px 60px; margin-bottom: 0; }
@@ -991,8 +1141,10 @@
       <img src="logo.png" alt="Gordinho Lava Car">
     </a>
     <nav>
-      <button class="menu-toggle" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Menu">
-        <i class="fas fa-bars"></i>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
       <ul>
         <li><a href="#sobre">Sobre Nós</a></li>
@@ -1005,6 +1157,18 @@
     </nav>
   </div>
 </header>
+
+<!-- ===== NAV OVERLAY ===== -->
+<div class="nav-overlay" id="navOverlay">
+  <ul>
+    <li><a href="#sobre">Sobre Nós</a></li>
+    <li><a href="#servicos">Nossos Serviços</a></li>
+    <li><a href="#lavagens">Lavagens</a></li>
+    <li><a href="#diferencial">Diferencial</a></li>
+    <li><a href="#faqs">FAQs</a></li>
+    <li><a href="http://www.contate.me/carwashcwb" class="btn btn-red btn-header">Contate-nos</a></li>
+  </ul>
+</div>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
@@ -1021,7 +1185,7 @@
           <i class="fas fa-car-alt"></i>
         </div>
         <div>
-          <div class="num">0<span>+</span></div>
+          <div class="num"><span class="counter-num" data-target="1250">0</span><span>+</span></div>
           <div class="label">Carros Lavados</div>
         </div>
       </div>
@@ -1244,22 +1408,37 @@
 <!-- ===== TESTIMONIALS ===== -->
 <section class="section">
   <div class="container">
-    <div class="testimonials-grid">
-      <div class="testimonial-card fade-in visible">
-        <i class="fas fa-quote-left"></i>
-        <p>"Serviço excelente... Muito atenciosos e cuidadosos com o carro. Super recomendo!"</p>
-        <div class="name">Caio</div>
+    <div class="testimonials-carousel-wrapper fade-in visible">
+      <button class="carousel-btn prev" onclick="moveCarousel(-1)"><i class="fas fa-chevron-left"></i></button>
+      <div class="testimonials-track" id="testimonialsTrack">
+        <div class="testimonial-card">
+          <i class="fas fa-quote-left"></i>
+          <p>"Serviço excelente... Muito atenciosos e cuidadosos com o carro. Super recomendo!"</p>
+          <div class="name">Caio</div>
+        </div>
+        <div class="testimonial-card">
+          <i class="fas fa-quote-left"></i>
+          <p>"Serviço excelente... Profissionais dedicados e resultado impecável."</p>
+          <div class="name">Lucas</div>
+        </div>
+        <div class="testimonial-card">
+          <i class="fas fa-quote-left"></i>
+          <p>"Serviço excelente... Meu carro ficou like novo! Atendimento nota 10."</p>
+          <div class="name">Daniele</div>
+        </div>
+        <div class="testimonial-card">
+          <i class="fas fa-quote-left"></i>
+          <p>"Atendimento nota 10! Super recomendo para todos os amigos e familiares!"</p>
+          <div class="name">Marcos</div>
+        </div>
+        <div class="testimonial-card">
+          <i class="fas fa-quote-left"></i>
+          <p>"Melhor lava car da região. Cuidado com cada detalhe do início ao fim."</p>
+          <div class="name">Amanda</div>
+        </div>
       </div>
-      <div class="testimonial-card fade-in visible">
-        <i class="fas fa-quote-left"></i>
-        <p>"Serviço excelente... Profissionais dedicados e resultado impecável."</p>
-        <div class="name">Lucas</div>
-      </div>
-      <div class="testimonial-card fade-in visible">
-        <i class="fas fa-quote-left"></i>
-        <p>"Serviço excelente... Meu carro ficou like novo! Atendimento nota 10."</p>
-        <div class="name">Daniele</div>
-      </div>
+      <button class="carousel-btn next" onclick="moveCarousel(1)"><i class="fas fa-chevron-right"></i></button>
+      <div class="carousel-dots" id="carouselDots"></div>
     </div>
   </div>
 </section>
@@ -1416,12 +1595,86 @@
 </a>
 
 <script>
-  // FAQ Toggle
+  // Smooth FAQ Accordion
   document.querySelectorAll('.faq-question').forEach(function(q) {
     q.addEventListener('click', function() {
       this.parentElement.classList.toggle('open');
     });
   });
+
+  // Animated Counter
+  function animateCounter(el) {
+    var target = parseInt(el.getAttribute('data-target'));
+    var current = 0;
+    var increment = Math.ceil(target / 60);
+    var timer = setInterval(function() {
+      current += increment;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = current;
+    }, 25);
+  }
+
+  // Testimonials Carousel
+  var carouselIndex = 0;
+  function initCarousel() {
+    var track = document.getElementById('testimonialsTrack');
+    if (!track) return;
+    var dotsContainer = document.getElementById('carouselDots');
+    var cards = track.querySelectorAll('.testimonial-card');
+    var total = cards.length;
+    dotsContainer.innerHTML = '';
+    for (var i = 0; i < total; i++) {
+      var dot = document.createElement('button');
+      if (i === 0) dot.classList.add('active');
+      dot.setAttribute('data-index', i);
+      dot.addEventListener('click', function() { goToCarousel(parseInt(this.getAttribute('data-index'))); });
+      dotsContainer.appendChild(dot);
+    }
+    goToCarousel(0);
+  }
+  function goToCarousel(index) {
+    var track = document.getElementById('testimonialsTrack');
+    if (!track) return;
+    var cards = track.querySelectorAll('.testimonial-card');
+    var total = cards.length;
+    if (index < 0) index = total - 1;
+    if (index >= total) index = 0;
+    carouselIndex = index;
+    var card = cards[0];
+    var cardWidth = card.offsetWidth + 20;
+    track.scrollTo({ left: cardWidth * index, behavior: 'smooth' });
+    var dots = document.querySelectorAll('.carousel-dots button');
+    dots.forEach(function(d, i) { d.classList.toggle('active', i === index); });
+  }
+  function moveCarousel(dir) { goToCarousel(carouselIndex + dir); }
+
+  // Ripple Effect on Buttons
+  document.querySelectorAll('.btn, .btn-small, .btn-header').forEach(function(btn) {
+    btn.classList.add('ripple');
+    btn.addEventListener('mousedown', function(e) {
+      var rect = this.getBoundingClientRect();
+      this.style.setProperty('--mouse-x', (e.clientX - rect.left) + 'px');
+      this.style.setProperty('--mouse-y', (e.clientY - rect.top) + 'px');
+    });
+  });
+
+  // Mobile Menu Overlay
+  var menuToggle = document.getElementById('menuToggle');
+  var navOverlay = document.getElementById('navOverlay');
+  if (menuToggle && navOverlay) {
+    menuToggle.addEventListener('click', function() {
+      this.classList.toggle('open');
+      navOverlay.classList.toggle('open');
+      document.body.style.overflow = navOverlay.classList.contains('open') ? 'hidden' : '';
+    });
+    navOverlay.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        menuToggle.classList.remove('open');
+        navOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  }
 
   // Scroll Animation Observer
   document.addEventListener('DOMContentLoaded', function() {
@@ -1434,27 +1687,24 @@
             entry.target.classList.add('visible');
           }
         });
-      }, { threshold: 0.1 });
+      }, { threshold: 0.15 });
       
       elements.forEach(function(el) {
         observer.observe(el);
       });
     } else {
-      // Fallback for older browsers
       elements.forEach(function(el) {
         el.classList.add('visible');
       });
     }
-  });
 
-  // Close mobile menu on link click
-  document.querySelectorAll('.header nav ul li a').forEach(function(link) {
-    link.addEventListener('click', function() {
-      var menu = this.closest('ul');
-      if (menu.classList.contains('open')) {
-        menu.classList.remove('open');
-      }
+    // Start counter animation (always visible in hero)
+    document.querySelectorAll('.counter-num').forEach(function(el) {
+      if (!el.dataset.animated) { el.dataset.animated = '1'; animateCounter(el); }
     });
+
+    // Init carousel
+    initCarousel();
   });
 </script>
 
