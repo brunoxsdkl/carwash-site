@@ -8,7 +8,7 @@
   <link rel="shortcut icon" href="logo.png">
   <meta name="description" content="RUA RIVADAVIA FONSECA DE MACEDO, 272 - CAJURU (41) 99622-0693 contato@carwashestetica.com Aberto Todos os Dias">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     *, *::before, *::after {
@@ -100,26 +100,24 @@
       align-items: center;
       justify-content: space-between;
     }
-    .header-links {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-      flex: 1;
-    }
-    .header-links.right {
-      justify-content: flex-end;
-    }
     .header .logo {
       flex-shrink: 0;
-      margin: 0 10px;
+      margin-left: -5px;
     }
     .header .logo img {
       width: 100%;
-      max-width: 170px;
+      max-width: 200px;
       display: block;
     }
-    .header-links a {
-      font-family: 'Exo 2', sans-serif;
+    .header nav {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 2px;
+    }
+    .header nav a {
+      font-family: 'Poppins', sans-serif;
       font-weight: 500;
       color: #A1A1AA;
       font-size: 18px;
@@ -129,7 +127,7 @@
       letter-spacing: 0.3px;
       white-space: nowrap;
     }
-    .header-links a::after {
+    .header nav a::after {
       content: '';
       position: absolute;
       bottom: 2px;
@@ -140,10 +138,10 @@
       transform: scaleX(0);
       transition: transform 0.3s;
     }
-    .header-links a:hover::after {
+    .header nav a:hover::after {
       transform: scaleX(1);
     }
-    .header-links a:hover {
+    .header nav a:hover {
       color: #fff;
     }
     .btn {
@@ -262,7 +260,7 @@
     .nav-overlay.open ul li:nth-child(6) { transition-delay: 0.35s; }
     .nav-overlay ul li a {
       color: #fff;
-      font-family: 'Exo 2', sans-serif;
+      font-family: 'Poppins', sans-serif;
       font-size: 28px;
       font-weight: 700;
       padding: 15px 30px;
@@ -1461,7 +1459,7 @@
       .hero .container { gap: 30px; }
     }
     @media (max-width: 768px) {
-      .header-links { display: none; }
+      .header nav { display: none; }
       .menu-toggle { display: flex; }
       .hero .container { flex-direction: column; gap: 30px; }
       .hero-content { max-width: 100%; text-align: center; }
@@ -1510,19 +1508,17 @@
 <!-- ===== HEADER ===== -->
 <header class="header">
   <div class="container">
-    <div class="header-links">
-      <a href="#sobre">Sobre Nós</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#galeria">Galeria</a>
-    </div>
     <a href="#" class="logo">
       <img src="logo.png" alt="Gordinho Lava Car">
     </a>
-    <div class="header-links right">
+    <nav>
+      <a href="#sobre">Sobre Nós</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#galeria">Galeria</a>
       <a href="#diferenciais">Diferenciais</a>
       <a href="#faqs">FAQs</a>
       <a href="https://wa.me/5541996220693" class="btn btn-red btn-header">Contate-nos</a>
-    </div>
+    </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="Menu">
       <span></span>
       <span></span>
