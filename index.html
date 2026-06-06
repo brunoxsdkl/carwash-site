@@ -859,15 +859,15 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 70px;
-      height: 70px;
+      width: 100px;
+      height: 100px;
       z-index: 999;
       cursor: pointer;
       transition: transform 0.3s;
-      animation: pulse-whats 2s infinite;
+      animation: pulse-whats 1.5s ease-in-out infinite;
     }
     .whatsapp-float:hover {
-      transform: scale(1.1);
+      transform: scale(1.15);
     }
     .whatsapp-float img {
       width: 100%;
@@ -875,9 +875,9 @@
       object-fit: contain;
     }
     @keyframes pulse-whats {
-      0% { filter: drop-shadow(0 0 0 rgba(229,57,53,0.4)); }
-      70% { filter: drop-shadow(0 0 12px rgba(229,57,53,0.2)); }
-      100% { filter: drop-shadow(0 0 0 rgba(229,57,53,0)); }
+      0% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+      100% { transform: scale(1); }
     }
 
     /* ===== ANIMATIONS ===== */
