@@ -1232,16 +1232,32 @@
 
     .banner-section {
       width: 100%;
-      background: var(--ink);
+      background: #000;
       display: flex;
+      align-items: center;
       justify-content: center;
+      height: 400px;
+      overflow: hidden;
     }
 
     .banner-section img {
-      max-width: 1920px;
       width: 100%;
-      height: auto;
+      height: 100%;
       display: block;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    @media (max-width: 1024px) {
+      .banner-section {
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .banner-section {
+        height: 220px;
+      }
     }
 
     .menu-btn {
