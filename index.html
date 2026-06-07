@@ -1236,12 +1236,25 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 24px 48px;
     }
 
     .banner-section img {
+      max-width: 1200px;
       width: 100%;
       height: auto;
       display: block;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .banner-section {
+        padding: 16px 20px;
+      }
+      .banner-section img {
+        border-radius: 10px;
+      }
     }
 
     .menu-btn {
