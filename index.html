@@ -1261,9 +1261,21 @@
       height: auto;
       display: block;
       border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      box-shadow:
+        0 0 0 1px rgba(230, 57, 70, 0.15),
+        0 0 30px rgba(230, 57, 70, 0.08),
+        0 8px 32px rgba(0, 0, 0, 0.3);
       position: relative;
       z-index: 1;
+      transition: box-shadow 0.5s ease;
+    }
+
+    .banner-section:hover img {
+      box-shadow:
+        0 0 0 1px rgba(230, 57, 70, 0.3),
+        0 0 50px rgba(230, 57, 70, 0.15),
+        0 0 80px rgba(201, 168, 76, 0.06),
+        0 12px 40px rgba(0, 0, 0, 0.4);
     }
 
     @media (max-width: 768px) {
