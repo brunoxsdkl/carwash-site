@@ -1221,15 +1221,6 @@
       }
     }
 
-    @media (max-width: 768px) {
-      .topbar {
-        display: none;
-      }
-
-      .nav {
-        display: none;
-      }
-
     .banner-section {
       width: 100%;
       background: #000;
@@ -1249,15 +1240,23 @@
     }
 
     @media (max-width: 768px) {
+      .topbar {
+        display: none;
+      }
+
+      .nav {
+        display: none;
+      }
+
       .banner-section {
         padding: 16px 20px;
       }
+
       .banner-section img {
         border-radius: 10px;
       }
-    }
 
-    .menu-btn {
+      .menu-btn {
         display: block;
       }
 
@@ -1283,7 +1282,20 @@
       }
 
       .hero-grid {
-      gap: 52px;
+        gap: 24px;
+      }
+
+      .header .btn-header {
+        display: none;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-actions .btn {
+        text-align: center;
       }
 
       .hero-visual {
@@ -1304,10 +1316,15 @@
 
       .hero-stats {
         grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
       }
 
       .stat strong {
-        font-size: 30px;
+        font-size: 28px;
+      }
+
+      .stat span {
+        font-size: 12px;
       }
 
       .about-grid {
