@@ -45,6 +45,20 @@
       line-height: 1.65;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 700px 500px at 5% 15%, rgba(230,57,70,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 600px 500px at 95% 85%, rgba(230,57,70,0.05) 0%, transparent 70%),
+        radial-gradient(ellipse 400px 300px at 50% 0%, rgba(255,255,255,0.02) 0%, transparent 70%),
+        radial-gradient(ellipse 400px 300px at 80% 20%, rgba(201,168,76,0.04) 0%, transparent 60%);
     }
 
     .container {
@@ -1241,175 +1255,6 @@
       z-index: 0;
     }
 
-    /* Water drops / foam drips effect */
-    .banner-section .drip {
-      position: absolute;
-      z-index: 2;
-      pointer-events: none;
-      border-radius: 50%;
-      background: radial-gradient(ellipse at center, rgba(255,255,255,0.25) 0%, transparent 70%);
-      animation: fall linear infinite;
-    }
-
-    .banner-section .drip:nth-child(1) {
-      width: 6px;
-      height: 18px;
-      left: 12%;
-      top: -20px;
-      animation-duration: 3.2s;
-      animation-delay: 0s;
-      opacity: 0.5;
-    }
-
-    .banner-section .drip:nth-child(2) {
-      width: 4px;
-      height: 12px;
-      left: 28%;
-      top: -20px;
-      animation-duration: 4.1s;
-      animation-delay: 0.8s;
-      opacity: 0.4;
-    }
-
-    .banner-section .drip:nth-child(3) {
-      width: 8px;
-      height: 22px;
-      left: 45%;
-      top: -20px;
-      animation-duration: 3.7s;
-      animation-delay: 1.5s;
-      opacity: 0.35;
-    }
-
-    .banner-section .drip:nth-child(4) {
-      width: 3px;
-      height: 10px;
-      left: 62%;
-      top: -20px;
-      animation-duration: 2.9s;
-      animation-delay: 0.3s;
-      opacity: 0.45;
-    }
-
-    .banner-section .drip:nth-child(5) {
-      width: 5px;
-      height: 16px;
-      left: 78%;
-      top: -20px;
-      animation-duration: 3.5s;
-      animation-delay: 2s;
-      opacity: 0.4;
-    }
-
-    .banner-section .drip:nth-child(6) {
-      width: 7px;
-      height: 20px;
-      left: 90%;
-      top: -20px;
-      animation-duration: 4.3s;
-      animation-delay: 1.2s;
-      opacity: 0.3;
-    }
-
-    .banner-section .drip:nth-child(7) {
-      width: 4px;
-      height: 14px;
-      left: 5%;
-      top: -20px;
-      animation-duration: 3.9s;
-      animation-delay: 0.5s;
-      opacity: 0.35;
-    }
-
-    .banner-section .drip:nth-child(8) {
-      width: 5px;
-      height: 15px;
-      left: 52%;
-      top: -20px;
-      animation-duration: 3.3s;
-      animation-delay: 2.5s;
-      opacity: 0.3;
-    }
-
-    /* Foam streaks sliding down */
-    .banner-section .foam-streak {
-      position: absolute;
-      z-index: 2;
-      pointer-events: none;
-      top: 0;
-      width: 2px;
-      background: linear-gradient(to bottom,
-        rgba(255,255,255,0) 0%,
-        rgba(255,255,255,0.08) 10%,
-        rgba(255,255,255,0.12) 30%,
-        rgba(255,255,255,0.06) 60%,
-        rgba(255,255,255,0) 100%
-      );
-      animation: streak linear infinite;
-    }
-
-    .foam-streak:nth-child(9) {
-      left: 20%;
-      height: 70%;
-      animation-duration: 5s;
-      animation-delay: 0s;
-    }
-
-    .foam-streak:nth-child(10) {
-      left: 40%;
-      height: 50%;
-      animation-duration: 6s;
-      animation-delay: 1s;
-    }
-
-    .foam-streak:nth-child(11) {
-      left: 70%;
-      height: 60%;
-      animation-duration: 4.5s;
-      animation-delay: 2s;
-    }
-
-    .foam-streak:nth-child(12) {
-      left: 85%;
-      height: 45%;
-      animation-duration: 5.5s;
-      animation-delay: 0.5s;
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 0;
-      }
-      5% {
-        opacity: 0.6;
-      }
-      85% {
-        opacity: 0.4;
-      }
-      100% {
-        transform: translateY(700px) scale(0.6);
-        opacity: 0;
-      }
-    }
-
-    @keyframes streak {
-      0% {
-        transform: translateY(-100%);
-        opacity: 0;
-      }
-      5% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 0.6;
-      }
-      100% {
-        transform: translateY(700px);
-        opacity: 0;
-      }
-    }
-
     .banner-section img {
       max-width: 1200px;
       width: 100%;
@@ -1588,18 +1433,6 @@
   </header>
 
   <section class="banner-section">
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="drip"></div>
-    <div class="foam-streak"></div>
-    <div class="foam-streak"></div>
-    <div class="foam-streak"></div>
-    <div class="foam-streak"></div>
     <img src="banner-gordinho.png" alt="Gordinho Lava Car - Banner" />
   </section>
 
