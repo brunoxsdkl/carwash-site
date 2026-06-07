@@ -189,11 +189,22 @@
     }
 
     .header .container {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      justify-content: center;
-      gap: 48px;
       padding: 14px 0;
+    }
+
+    .header .logo {
+      justify-self: start;
+    }
+
+    .header .nav {
+      justify-self: center;
+    }
+
+    .header .menu-btn {
+      justify-self: end;
     }
 
     .logo img {
