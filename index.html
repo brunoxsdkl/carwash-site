@@ -34,8 +34,56 @@
       --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.15);
     }
 
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--ink);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--ink3);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--gold);
+    }
+
     html {
       scroll-behavior: smooth;
+    }
+
+    .back-top {
+      position: fixed;
+      right: 20px;
+      bottom: 96px;
+      z-index: 89;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--ink2);
+      border: 1px solid rgba(230, 57, 70, 0.2);
+      color: var(--gold);
+      font-size: 18px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      pointer-events: none;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    .back-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .back-top:hover {
+      background: var(--gold);
+      color: var(--ink);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(230, 57, 70, 0.3);
     }
 
     body {
@@ -385,7 +433,10 @@
     }
 
     .hero h1 span {
-      color: var(--gold);
+      background: linear-gradient(135deg, var(--gold) 30%, var(--gold-light) 70%, #ff9a56 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .hero p {
@@ -1971,6 +2022,10 @@
     </div>
   </footer>
 
+  <a class="back-top" id="backTop" href="#" aria-label="Voltar ao topo">
+    <i class="fa-solid fa-chevron-up"></i>
+  </a>
+
   <a class="whats-float" href="https://wa.me/5541996220693" target="_blank" aria-label="WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
@@ -1994,6 +2049,20 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const backTop = document.getElementById('backTop');
+    window.addEventListener('scroll', () => {
+      backTop.classList.toggle('visible', window.scrollY > 600);
+    }, { passive: true });
+
+    const bannerImg = document.querySelector('.banner-section img');
+    if (bannerImg) {
+      window.addEventListener('scroll', () => {
+        requestAnimationFrame(() => {
+          bannerImg.style.transform = `translateY(${window.scrollY * -0.06}px)`;
+        });
+      }, { passive: true });
+    }
   </script>
 </body>
 </html>
