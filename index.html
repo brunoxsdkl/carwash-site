@@ -99,6 +99,30 @@
     .section {
       padding: 100px 0;
       position: relative;
+      z-index: 0;
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 650px 400px at 15% 20%, rgba(230,57,70,0.05) 0%, transparent 60%),
+        radial-gradient(ellipse 500px 400px at 85% 80%, rgba(201,168,76,0.03) 0%, transparent 60%);
+    }
+
+    .section::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      width: 80%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(230,57,70,0.06), transparent);
+      pointer-events: none;
+      z-index: 0;
     }
 
     .btn {
@@ -582,13 +606,22 @@
       border: 1px solid rgba(255, 255, 255, 0.04);
       border-radius: var(--radius);
       padding: 32px 28px;
+      position: relative;
+      z-index: 1;
+      box-shadow:
+        0 0 0 1px rgba(230, 57, 70, 0.04),
+        0 4px 20px rgba(0, 0, 0, 0.15),
+        0 0 40px rgba(230, 57, 70, 0.02);
       transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .feature:hover {
       transform: translateY(-6px);
-      border-color: rgba(201, 168, 76, 0.15);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+      border-color: rgba(230, 57, 70, 0.15);
+      box-shadow:
+        0 0 0 1px rgba(230, 57, 70, 0.12),
+        0 8px 32px rgba(0, 0, 0, 0.25),
+        0 0 60px rgba(230, 57, 70, 0.06);
     }
 
     .feature i {
@@ -626,13 +659,22 @@
       border: 1px solid rgba(255, 255, 255, 0.04);
       border-radius: var(--radius);
       overflow: hidden;
+      position: relative;
+      z-index: 1;
+      box-shadow:
+        0 0 0 1px rgba(230, 57, 70, 0.04),
+        0 4px 20px rgba(0, 0, 0, 0.15),
+        0 0 40px rgba(230, 57, 70, 0.02);
       transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .service-card:hover {
       transform: translateY(-8px);
-      border-color: rgba(201, 168, 76, 0.12);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      border-color: rgba(230, 57, 70, 0.12);
+      box-shadow:
+        0 0 0 1px rgba(230, 57, 70, 0.12),
+        0 12px 40px rgba(0, 0, 0, 0.3),
+        0 0 60px rgba(230, 57, 70, 0.06);
     }
 
     .service-card img {
@@ -680,12 +722,21 @@
       display: flex;
       flex-direction: column;
       position: relative;
+      z-index: 1;
+      box-shadow:
+        0 0 0 1px rgba(230, 57, 70, 0.04),
+        0 4px 20px rgba(0, 0, 0, 0.15),
+        0 0 40px rgba(230, 57, 70, 0.02);
       transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .plan:hover {
-      border-color: rgba(201, 168, 76, 0.12);
+      border-color: rgba(230, 57, 70, 0.12);
       transform: translateY(-4px);
+      box-shadow:
+        0 0 0 1px rgba(230, 57, 70, 0.12),
+        0 12px 40px rgba(0, 0, 0, 0.3),
+        0 0 60px rgba(230, 57, 70, 0.06);
     }
 
     .plan h3 {
@@ -725,8 +776,8 @@
     }
 
     .plan.featured {
-      background: linear-gradient(180deg, rgba(201, 168, 76, 0.06) 0%, transparent 100%);
-      border-color: rgba(201, 168, 76, 0.2);
+      background: linear-gradient(180deg, rgba(230, 57, 70, 0.06) 0%, transparent 100%);
+      border-color: rgba(230, 57, 70, 0.2);
       transform: translateY(-8px);
     }
 
@@ -761,6 +812,13 @@
       border: 1px solid rgba(255, 255, 255, 0.04);
       border-radius: var(--radius);
       overflow: hidden;
+      position: relative;
+      z-index: 1;
+      box-shadow:
+        0 0 0 1px rgba(230, 57, 70, 0.04),
+        0 4px 20px rgba(0, 0, 0, 0.15),
+        0 0 40px rgba(230, 57, 70, 0.02);
+      transition: all 0.3s;
     }
 
     .hours-head {
@@ -799,6 +857,13 @@
       border: 1px solid rgba(255, 255, 255, 0.04);
       border-radius: var(--radius);
       overflow: hidden;
+      position: relative;
+      z-index: 1;
+      box-shadow:
+        0 0 0 1px rgba(230, 57, 70, 0.04),
+        0 4px 20px rgba(0, 0, 0, 0.15),
+        0 0 40px rgba(230, 57, 70, 0.02);
+      transition: all 0.3s;
     }
 
     .visit-card iframe {
@@ -856,11 +921,20 @@
       border: 1px solid rgba(255, 255, 255, 0.04);
       border-radius: var(--radius);
       padding: 28px;
+      position: relative;
+      z-index: 1;
+      box-shadow:
+        0 0 0 1px rgba(230, 57, 70, 0.04),
+        0 4px 20px rgba(0, 0, 0, 0.15);
       transition: all 0.3s;
     }
 
     .reason:hover {
-      border-color: rgba(201, 168, 76, 0.12);
+      border-color: rgba(230, 57, 70, 0.12);
+      box-shadow:
+        0 0 0 1px rgba(230, 57, 70, 0.12),
+        0 8px 32px rgba(0, 0, 0, 0.25),
+        0 0 50px rgba(230, 57, 70, 0.05);
     }
 
     .reason i {
@@ -895,11 +969,20 @@
       border-radius: var(--radius);
       padding: 36px 28px;
       text-align: center;
+      position: relative;
+      z-index: 1;
+      box-shadow:
+        0 0 0 1px rgba(230, 57, 70, 0.04),
+        0 4px 20px rgba(0, 0, 0, 0.15);
       transition: all 0.3s;
     }
 
     .process-step:hover {
-      border-color: rgba(201, 168, 76, 0.1);
+      border-color: rgba(230, 57, 70, 0.12);
+      box-shadow:
+        0 0 0 1px rgba(230, 57, 70, 0.12),
+        0 8px 32px rgba(0, 0, 0, 0.25),
+        0 0 50px rgba(230, 57, 70, 0.05);
     }
 
     .process-step .num {
@@ -935,6 +1018,21 @@
       border: 1px solid rgba(255, 255, 255, 0.04);
       border-radius: var(--radius);
       padding: 32px 28px;
+      position: relative;
+      z-index: 1;
+      box-shadow:
+        0 0 0 1px rgba(230, 57, 70, 0.04),
+        0 4px 20px rgba(0, 0, 0, 0.15),
+        0 0 40px rgba(230, 57, 70, 0.02);
+      transition: all 0.3s;
+    }
+
+    .testimonial:hover {
+      border-color: rgba(230, 57, 70, 0.08);
+      box-shadow:
+        0 0 0 1px rgba(230, 57, 70, 0.08),
+        0 8px 32px rgba(0, 0, 0, 0.25),
+        0 0 50px rgba(230, 57, 70, 0.04);
     }
 
     .testimonial i.quote {
@@ -975,6 +1073,12 @@
       border-radius: var(--radius-sm);
       margin-bottom: 10px;
       overflow: hidden;
+      position: relative;
+      z-index: 1;
+      box-shadow:
+        0 0 0 1px rgba(230, 57, 70, 0.04),
+        0 2px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s;
     }
 
     .faq-q {
